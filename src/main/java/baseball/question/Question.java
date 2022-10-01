@@ -16,19 +16,8 @@ public class Question {
         int pickedNumber;
         do {
             pickedNumber = Randoms.pickNumberInRange(111, 999);
-        } while (this.hasZero(pickedNumber) || this.hasDuplicated(pickedNumber));
+        } while (!JudgeNumbers.isJudgeable(pickedNumber));
 
         return pickedNumber;
-    }
-
-    private boolean hasZero(int number) {
-        return String.valueOf(number).contains("0");
-    }
-
-    private boolean hasDuplicated(int number) {
-        Set<String> set = new HashSet<>();
-        String[] numberElements = String.valueOf(number).split("");
-        Collections.addAll(set, numberElements);
-        return set.size() != numberElements.length;
     }
 }
