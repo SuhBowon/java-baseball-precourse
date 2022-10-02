@@ -1,9 +1,6 @@
 package baseball.question;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Question {
     public final JudgeNumbers judgeNumbers;
@@ -12,12 +9,20 @@ public class Question {
         this.judgeNumbers = JudgeNumbers.of(this.getRandom());
     }
 
-    private int getRandom() {
-        int pickedNumber;
+    private String getRandom() {
+        String pickedNumber;
         do {
-            pickedNumber = Randoms.pickNumberInRange(111, 999);
+            pickedNumber = this.getCandidateNumber();
         } while (!JudgeNumbers.isJudgeable(pickedNumber));
 
         return pickedNumber;
+    }
+
+    private String getCandidateNumber() {
+        StringBuilder pickedNumber = new StringBuilder();
+        for (int i = 0; i < 3; i++) {
+            pickedNumber.append(Randoms.pickNumberInRange(1, 9));
+        }
+        return pickedNumber.toString();
     }
 }
