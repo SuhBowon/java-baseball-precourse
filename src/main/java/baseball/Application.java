@@ -1,7 +1,14 @@
 package baseball;
 
+import baseball.controller.Game;
+import baseball.question.Question;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Game game;
+        do {
+            game = new Game(new Question().judgeNumbers);
+            game.start();
+        } while (game.needContinue());
     }
 }
