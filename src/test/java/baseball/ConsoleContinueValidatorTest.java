@@ -20,22 +20,22 @@ public class ConsoleContinueValidatorTest {
     @Test
     void 인식_예외_길이_1_아님() {
         String[] errorStrings = new String[]{"", "12", "123", "1234"};
-        this.assertErrorInputsThrowException(errorStrings);
+        this.assertNotAcceptableStringsThrowException(errorStrings);
     }
 
     @Test
     void 인식_예외_숫자_아님() {
         String[] errorStrings = new String[]{"a", "ㄱ", "+", "-"};
-        this.assertErrorInputsThrowException(errorStrings);
+        this.assertNotAcceptableStringsThrowException(errorStrings);
     }
 
     @Test
     void 인식_예외_숫자_범위_벗어남() {
         String[] errorStrings = new String[]{"0", "3", "9"};
-        this.assertErrorInputsThrowException(errorStrings);
+        this.assertNotAcceptableStringsThrowException(errorStrings);
     }
 
-    private void assertErrorInputsThrowException(String[] errorStrings) {
+    private void assertNotAcceptableStringsThrowException(String[] errorStrings) {
         for (String errorString : errorStrings) {
             assertThatThrownBy(() -> ConsoleContinueValidator.assertValid(errorString))
                     .isInstanceOf(IllegalArgumentException.class);

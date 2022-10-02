@@ -13,7 +13,7 @@ public class Question {
         String pickedNumber;
         do {
             pickedNumber = this.getCandidateNumber();
-        } while (!JudgeNumbers.isJudgeable(pickedNumber));
+        } while (!JudgeNumbersValidator.isAcceptable(pickedNumber));
 
         return pickedNumber;
     }
